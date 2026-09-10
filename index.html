@@ -246,10 +246,6 @@
                         <span
                             class="text-[10px] bg-slate-800 text-emerald-400 px-2 py-0.5 rounded-md font-bold">-20%</span>
                     </div>
-                    <div class="text-xs text-slate-400 mt-1.5 flex items-center gap-1.5">
-                        <i class="fa-solid fa-circle-check text-emerald-400 text-[11px]"></i>
-                        <span>Hỗ trợ cài đặt 1:1, test tính năng đầy đủ</span>
-                    </div>
                 </div>
                 <div
                     class="flex items-center justify-between sm:justify-end gap-3.5 pt-2 sm:pt-0 border-t border-white/5 sm:border-t-0">
@@ -274,10 +270,6 @@
                     <div class="flex items-center gap-2 flex-wrap">
                         <span class="font-bold text-sm sm:text-base text-cyan-300">GÓI 7 NGÀY</span>
                         <span class="text-[10px] bg-cyan-950 text-cyan-300 px-2 py-0.5 rounded-md font-bold">-17%</span>
-                    </div>
-                    <div class="text-xs text-slate-400 mt-1.5 flex items-center gap-1.5">
-                        <i class="fa-solid fa-circle-check text-emerald-400 text-[11px]"></i>
-                        <span>Cập nhật tự động, hỗ trợ ưu tiên 24/7</span>
                     </div>
                 </div>
                 <div
@@ -312,10 +304,6 @@
                         <span
                             class="text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800 px-2 py-0.5 rounded-md font-bold">Tiết
                             kiệm 300k</span>
-                    </div>
-                    <div class="text-xs text-slate-300 mt-1.5 flex items-center gap-1.5">
-                        <i class="fa-solid fa-bolt text-amber-400 text-[11px]"></i>
-                        <span>Tiết kiệm 85%, tặng kèm HDSD chi tiết</span>
                     </div>
                 </div>
                 <div
@@ -354,7 +342,7 @@
                     </div>
                     <div class="text-xs text-slate-300 mt-1.5 flex items-center gap-1.5">
                         <i class="fa-solid fa-crown text-amber-400 text-[11px]"></i>
-                        <span>Dùng vĩnh viễn, ưu tiên hỗ trợ VIP 1:1</span>
+                        <span>Dùng vĩnh viễn, ưu tiên hỗ trợ 1:1</span>
                     </div>
                 </div>
                 <div
@@ -471,20 +459,24 @@
                         499.000đ</strong></span>
             </div>
 
-            <!-- Main CTA Button -->
-            <a id="main-cta-btn" href="https://t.me/hacktheisle" target="_blank" rel="noopener noreferrer"
-                class="group relative flex items-center justify-center gap-3 w-full py-4 px-6 overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-slate-950 font-extrabold tracking-wide text-sm sm:text-base border border-emerald-400/30 backdrop-blur-md transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:shadow-emerald-500/25 active:scale-[0.98] animate-pulse-glow">
+            <!-- Main Call To Action Button -->
+            <div class="text-center relative z-10 space-y-3">
+                <!-- Main CTA Button -->
+                <a href="https://t.me/hacktheisle" target="_blank" rel="noopener noreferrer"
+                    class="group relative flex items-center justify-center gap-3 w-full py-4 px-6 overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-500/90 via-teal-500/90 to-cyan-500/90 text-slate-950 font-extrabold tracking-wide text-sm sm:text-base border border-emerald-400/30 backdrop-blur-md transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:shadow-emerald-500/20 active:scale-[0.98]">
 
-                <div
-                    class="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out">
-                </div>
+                    <!-- Subtle Light Reflection (Lớp sáng lướt qua nhẹ nhàng) -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out">
+                    </div>
 
-                <i
-                    class="fa-brands fa-telegram text-xl sm:text-2xl transition-transform duration-300 group-hover:rotate-12"></i>
-                <span id="main-cta-text" class="uppercase font-sans font-black">LIÊN HỆ ĐẶT MUA GÓI PHỔ THÔNG</span>
-                <i
-                    class="fa-solid fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1"></i>
-            </a>
+                    <i
+                        class="fa-brands fa-telegram text-lg sm:text-xl transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"></i>
+                    <span class="uppercase font-sans font-black">LIÊN HỆ ĐẶT MUA NGAY</span>
+                    <i
+                        class="fa-solid fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1"></i>
+                </a>
+            </div>
 
             <!-- Quick Action Links -->
             <div class="flex items-center justify-center gap-3 flex-wrap pt-1">
@@ -599,7 +591,7 @@
 
             // Update Header/CTA badges
             document.getElementById('selected-package-name').innerText = `${name} - ${price}`;
-            document.getElementById('main-cta-text').innerText = `LIÊN HỆ ĐẶT MUA ${name.split(' ')[0]} ${name.split(' ')[1] || ''}`;
+            document.getElementById('main-cta-text').innerText = `LIÊN HỆ ĐẶT MUA`;
 
             // Update Mobile Bar
             document.getElementById('mobile-selected-name').innerText = name;
