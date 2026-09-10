@@ -462,38 +462,6 @@
 
     </main>
 
-    <!-- Mobile Floating Bottom CTA Bar -->
-    <div
-        class="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 border-t border-emerald-500/30 p-3 backdrop-blur-xl flex items-center justify-between gap-3 shadow-2xl">
-        <div class="flex-1 min-w-0">
-            <div id="mobile-selected-name" class="text-[11px] text-slate-400 truncate">GÓI PHỔ THÔNG (30 Ngày)</div>
-            <div id="mobile-selected-price" class="text-base font-black font-orbitron text-emerald-400">499.000đ</div>
-        </div>
-        <a href="https://t.me/hacktheisle" target="_blank" rel="noopener noreferrer"
-            class="px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-black text-xs rounded-xl flex items-center gap-1.5 uppercase shrink-0 shadow-lg shadow-emerald-500/20">
-            <i class="fa-brands fa-telegram text-sm"></i>
-            <span>MUA NGAY</span>
-        </a>
-    </div>
-
-    <!-- Live Social Proof Notification Toast -->
-    <div id="social-proof-toast"
-        class="fixed bottom-16 sm:bottom-6 left-3 sm:left-6 z-50 max-w-xs bg-slate-900/90 border border-emerald-500/30 text-white rounded-2xl p-3 shadow-2xl backdrop-blur-xl hidden sm:flex items-center gap-3 transition-all duration-500 animate-slide-up">
-        <div
-            class="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center shrink-0 text-emerald-400 text-xs">
-            <i class="fa-solid fa-shopping-cart"></i>
-        </div>
-        <div class="flex-1 text-xs">
-            <div id="toast-user" class="font-bold text-slate-200">Khách hàng @tuan***</div>
-            <div id="toast-desc" class="text-slate-400 text-[11px]">Vừa kích hoạt <span
-                    class="text-emerald-400 font-semibold">Gói 30 Ngày</span> (2 phút trước)</div>
-        </div>
-        <button onclick="document.getElementById('social-proof-toast').classList.add('hidden')"
-            class="text-slate-500 hover:text-white text-xs p-1">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-    </div>
-
     <!-- Toast Copy Alert Notification -->
     <div id="copy-toast"
         class="fixed top-5 right-5 z-50 bg-emerald-500 text-slate-950 font-bold px-4 py-2.5 rounded-xl shadow-2xl text-xs flex items-center gap-2 transition-all duration-300 opacity-0 pointer-events-none -translate-y-2">
@@ -589,14 +557,6 @@
                 setTimeout(() => modal.classList.add('hidden'), 300);
             }
         }
-
-        // Live Purchase Social Proof Ticker Simulation
-        const samplePurchases = [
-            { user: "Khách hàng @nam***", desc: "Vừa kích hoạt Gói 30 Ngày (1 phút trước)" },
-            { user: "Khách hàng @hoang***", desc: "Vừa mua Gói VIP Trọn Đời (3 phút trước)" },
-            { user: "Khách hàng @dinh***", desc: "Vừa kích hoạt Gói 7 Ngày (5 phút trước)" },
-            { user: "Khách hàng @viet***", desc: "Vừa kích hoạt Gói 30 Ngày (7 phút trước)" }
-        ];
 
         let purchaseIdx = 0;
         function cycleSocialProof() {
