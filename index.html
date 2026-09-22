@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hack The Isle - Bảng Giá Dịch Vụ Uy Tín 2026</title>
+    <title>Hack The Isle - Giới Thiệu & Bảng Giá Dịch Vụ 2026</title>
 
     <!-- Tailwind CSS v3 -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,22 +12,20 @@
     <!-- FontAwesome 6 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Google Fonts (Orbitron + Plus Jakarta Sans) -->
+    <!-- Google Fonts (Chakra Petch [High-Tech Vietnamese] + Plus Jakarta Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&display=swap"
         rel="stylesheet">
-
-    <!-- html2canvas for Poster Export -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        orbitron: ['Orbitron', 'sans-serif'],
+                        tech: ['Chakra Petch', 'Plus Jakarta Sans', 'sans-serif'],
+                        orbitron: ['Chakra Petch', 'Plus Jakarta Sans', 'sans-serif'],
                         sans: ['Plus Jakarta Sans', 'sans-serif'],
                     },
                     colors: {
@@ -37,6 +35,7 @@
                             emerald: '#10b981',
                             cyan: '#06b6d4',
                             amber: '#f59e0b',
+                            discord: '#5865F2',
                         }
                     }
                 }
@@ -49,6 +48,8 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #060911;
             color: #f3f4f6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* Ambient Cyber Grid Background */
@@ -90,74 +91,63 @@
             opacity: 1;
         }
 
-        .spotlight-card.selected-card {
+        .spotlight-card.featured-card {
             border-color: rgba(16, 185, 129, 0.8) !important;
-            box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.4), inset 0 0 15px rgba(16, 185, 129, 0.1);
+            box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.3), inset 0 0 15px rgba(16, 185, 129, 0.08);
         }
 
-        /* Pulse Animation */
-        @keyframes pulse-glow {
+        /* Animated Gradient Border FX */
+        @keyframes border-glow {
+            0%, 100% { border-color: rgba(16, 185, 129, 0.6); }
+            50% { border-color: rgba(6, 182, 212, 0.8); }
+        }
+        .animate-border-glow {
+            animation: border-glow 4s infinite ease-in-out;
+        }
 
-            0%,
-            100% {
-                box-shadow: 0 0 20px rgba(16, 185, 129, 0.5), 0 0 40px rgba(6, 182, 212, 0.2);
+        /* Discord Pulse Animation */
+        @keyframes discord-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(88, 101, 242, 0.5), 0 0 40px rgba(16, 185, 129, 0.2);
             }
-
             50% {
-                box-shadow: 0 0 35px rgba(6, 182, 212, 0.7), 0 0 55px rgba(16, 185, 129, 0.4);
+                box-shadow: 0 0 35px rgba(88, 101, 242, 0.8), 0 0 55px rgba(6, 182, 212, 0.4);
             }
         }
 
-        .animate-pulse-glow {
-            animation: pulse-glow 2.5s infinite ease-in-out;
+        .animate-discord-glow {
+            animation: discord-glow 3s infinite ease-in-out;
         }
 
-        /* Toast Popup Entrance Animation */
-        @keyframes slideInUp {
-            from {
-                transform: translateY(100%) scale(0.9);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0) scale(1);
-                opacity: 1;
-            }
-        }
-
-        .animate-slide-up {
-            animation: slideInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        /* Active Tab Styling */
+        .tab-btn.active {
+            background-color: rgba(16, 185, 129, 0.2);
+            border-color: rgba(16, 185, 129, 0.5);
+            color: #34d399;
         }
     </style>
 </head>
 
 <body
-    class="min-h-screen bg-cyber-grid flex flex-col items-center justify-center p-3 sm:p-6 md:p-10 selection:bg-emerald-500 selection:text-black relative pb-24 sm:pb-10">
+    class="min-h-screen bg-cyber-grid flex flex-col items-center justify-center p-3 sm:p-6 md:p-10 selection:bg-emerald-500 selection:text-black relative pb-20 md:pb-10">
 
-    <!-- Top Navigation Bar / Actions -->
-    <header
-        class="w-full max-w-xl md:max-w-2xl mb-4 flex items-center justify-between px-2 text-xs sm:text-sm text-gray-400">
+    <!-- Top Live System Status Bar -->
+    <header class="w-full max-w-xl md:max-w-2xl mb-3 flex items-center justify-between px-2 text-[11px] sm:text-xs text-slate-400">
         <div class="flex items-center gap-2">
             <span class="relative flex h-2.5 w-2.5">
-                <span
-                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
             </span>
-            <span class="font-medium text-slate-300">Hệ Thống Tự Động Online 24/7</span>
+            <span class="font-bold text-slate-200">STATUS: <span class="text-emerald-400 font-tech">UNDETECTED (SAFE 100%)</span></span>
         </div>
-
-        <div class="flex items-center gap-2">
-            <!-- Copy Telegram Button -->
-            <button onclick="copyTelegram()" title="Sao chép Telegram Username"
-                class="flex items-center gap-1.5 hover:text-emerald-400 transition-all bg-slate-900/80 hover:bg-slate-800 px-3 py-1.5 rounded-xl border border-white/10 text-xs font-semibold">
-                <i class="fa-solid fa-copy text-emerald-400"></i>
-                <span class="hidden sm:inline">Sao chép</span> @hacktheisle
-            </button>
+        <div class="hidden sm:flex items-center gap-3 text-slate-400">
+            <span><i class="fa-solid fa-code-branch text-cyan-400 mr-1"></i>v2026.4</span>
+            <span><i class="fa-solid fa-gamepad text-purple-400 mr-1"></i>The Isle</span>
         </div>
     </header>
 
-    <!-- Main Poster / Price Card Container -->
-    <main id="pricing-poster"
+    <!-- Main Container -->
+    <main
         class="w-full max-w-xl md:max-w-2xl bg-gray-950/90 text-white rounded-3xl p-5 sm:p-8 md:p-9 border border-gray-800/80 relative overflow-hidden shadow-2xl backdrop-blur-2xl">
 
         <!-- Decorative Ambient Orbs -->
@@ -173,334 +163,359 @@
         <div class="text-center mb-6 relative z-10">
             <div
                 class="inline-flex items-center gap-1.5 px-3.5 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-400 text-xs font-bold tracking-wider uppercase mb-3 shadow-inner">
-                <i class="fa-solid fa-shield-halved text-[11px]"></i> BẢNG GIÁ DỊCH VỤ UY TÍN 2026
+                <i class="fa-solid fa-shield-halved text-[11px]"></i> TÍNH NĂNG VƯỢT TRỘI & BẢNG GIÁ 2026
             </div>
 
             <h1
-                class="text-3xl sm:text-4xl md:text-5xl font-black font-orbitron tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-300 to-emerald-400 uppercase drop-shadow-md">
+                class="text-3xl sm:text-4xl md:text-5xl font-extrabold font-tech tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-300 to-emerald-400 uppercase drop-shadow-md">
                 HACK THE ISLE
             </h1>
-
+            <p class="text-xs sm:text-sm text-slate-400 mt-2 max-w-md mx-auto font-medium">
+                Phần mềm hỗ trợ chơi game The Isle đỉnh cao - An toàn, chuẩn xác, tự động cập nhật 24/7
+            </p>
         </div>
 
-        <!-- Instruction Banner -->
-        <div
-            class="mb-4 text-center text-xs text-slate-400 relative z-10 flex items-center justify-center gap-1.5 bg-slate-900/50 py-2 px-3 rounded-xl border border-white/5">
-            <i class="fa-solid fa-hand-point-down text-emerald-400 animate-bounce"></i>
-            <span>Bấm vào gói bạn muốn chọn để chuẩn bị đặt hàng:</span>
+        <!-- Trust & Live Stats Counter Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-7 relative z-10 text-center">
+            <div class="bg-slate-900/50 border border-white/5 rounded-2xl p-2.5 backdrop-blur-md">
+                <div class="text-lg sm:text-xl font-extrabold font-tech text-emerald-400">99.9%</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">Anti-Ban Safe</div>
+            </div>
+            <div class="bg-slate-900/50 border border-white/5 rounded-2xl p-2.5 backdrop-blur-md">
+                <div class="text-lg sm:text-xl font-extrabold font-tech text-cyan-400">5.000+</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">Game Thủ Tin Dùng</div>
+            </div>
+            <div class="bg-slate-900/50 border border-white/5 rounded-2xl p-2.5 backdrop-blur-md">
+                <div class="text-lg sm:text-xl font-extrabold font-tech text-purple-400">0.0s</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">Độ Trễ Cập Nhật</div>
+            </div>
+            <div class="bg-slate-900/50 border border-white/5 rounded-2xl p-2.5 backdrop-blur-md">
+                <div class="text-lg sm:text-xl font-extrabold font-tech text-amber-400">24/7</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">Hỗ Trợ KTV 1:1</div>
+            </div>
         </div>
 
-        <!-- Pricing Cards List -->
-        <div class="space-y-3.5 mb-7 relative z-10">
+        <!-- Section 1: HACK FEATURES (TÍNH NĂNG NỔI BẬT) -->
+        <div class="relative z-10 mb-7">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3.5 gap-2 px-1">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-bolt-lightning text-amber-400 text-sm"></i>
+                    <h2 class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-100 font-tech">
+                        TÍNH NĂNG HACK BÁ ĐẠO
+                    </h2>
+                </div>
+                <!-- Interactive Category Filter Tabs -->
+                <div class="flex items-center gap-1 bg-slate-900/70 p-1 rounded-xl border border-white/5 text-[10px] sm:text-xs">
+                    <button onclick="filterFeatures('all', this)" class="tab-btn active px-2.5 py-1 rounded-lg font-bold transition-all">Tất cả</button>
+                    <button onclick="filterFeatures('esp', this)" class="tab-btn px-2.5 py-1 rounded-lg font-bold transition-all text-slate-400 hover:text-white">ESP & HUD</button>
+                    <button onclick="filterFeatures('combat', this)" class="tab-btn px-2.5 py-1 rounded-lg font-bold transition-all text-slate-400 hover:text-white">Combat</button>
+                </div>
+            </div>
 
-            <!-- Item 1: 1 Ngay -->
-            <div onclick="selectPackage('GÓI TRẢI NGHIỆM (1 Ngày)', '119.000đ', this)"
-                class="spotlight-card group relative cursor-pointer overflow-hidden rounded-2xl p-4 sm:p-4.5 border border-white/5 backdrop-blur-md transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div class="flex-1">
-                    <div class="flex items-center gap-2 flex-wrap">
-                        <span
-                            class="font-bold text-sm sm:text-base text-slate-200 group-hover:text-white transition-colors">GÓI
-                            1 NGÀY</span>
-                        <span
-                            class="text-[10px] bg-slate-800 text-emerald-400 px-2 py-0.5 rounded-md font-bold">-20%</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="features-grid">
+                <!-- Feature 1: ESP -->
+                <div data-category="esp" class="feature-card spotlight-card rounded-2xl p-3.5 border border-white/5 bg-slate-900/40">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center shrink-0 text-emerald-400">
+                            <i class="fa-solid fa-eye text-xs"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <div class="font-bold text-xs sm:text-sm text-slate-100 font-tech tracking-wide">ESP ĐA NĂNG</div>
+                                <span class="text-[9px] bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 rounded font-bold border border-emerald-500/20">REALTIME</span>
+                            </div>
+                            <div class="text-[11px] text-slate-400 mt-0.5 leading-relaxed font-normal">
+                                Định vị chính xác Người chơi / AI / Xác chết trên bản đồ.
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Feature 2: HUD Stats -->
+                <div data-category="esp" class="feature-card spotlight-card rounded-2xl p-3.5 border border-white/5 bg-slate-900/40">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center shrink-0 text-cyan-400">
+                            <i class="fa-solid fa-chart-simple text-xs"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <div class="font-bold text-xs sm:text-sm text-slate-100 font-tech tracking-wide">HUD STATS LIVE</div>
+                                <span class="text-[9px] bg-cyan-500/10 text-cyan-400 px-1.5 py-0.5 rounded font-bold border border-cyan-500/20">0s DELAY</span>
+                            </div>
+                            <div class="text-[11px] text-slate-400 mt-0.5 leading-relaxed font-normal">
+                                Hiện chỉ số bản thân (Máu / Stamina / Chảy máu) cập nhật trực tiếp 0s delay.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 3: Prime Checker -->
+                <div data-category="esp" class="feature-card spotlight-card rounded-2xl p-3.5 border border-white/5 bg-slate-900/40">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center shrink-0 text-purple-400">
+                            <i class="fa-solid fa-crown text-xs"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <div class="font-bold text-xs sm:text-sm text-slate-100 font-tech tracking-wide">PRIME CHECKER</div>
+                                <span class="text-[9px] bg-purple-500/10 text-purple-400 px-1.5 py-0.5 rounded font-bold border border-purple-500/20">AUTO</span>
+                            </div>
+                            <div class="text-[11px] text-slate-400 mt-0.5 leading-relaxed font-normal">
+                                Kiểm tra và hiển thị tức thì trạng thái Prime của mục tiêu.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 4: Long Bite -->
+                <div data-category="combat" class="feature-card spotlight-card rounded-2xl p-3.5 border border-white/5 bg-slate-900/40">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center shrink-0 text-red-400">
+                            <i class="fa-solid fa-teeth-open text-xs"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <div class="font-bold text-xs sm:text-sm text-slate-100 font-tech tracking-wide">LONG BITE</div>
+                                <span class="text-[9px] bg-red-500/10 text-red-400 px-1.5 py-0.5 rounded font-bold border border-red-500/20">EXTENDED</span>
+                            </div>
+                            <div class="text-[11px] text-slate-400 mt-0.5 leading-relaxed font-normal">
+                                Cắn tầm xa vượt khoảng cách mặc định game.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 5: Insta Turn -->
+                <div data-category="combat" class="feature-card spotlight-card rounded-2xl p-3.5 border border-white/5 bg-slate-900/40">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0 text-amber-400">
+                            <i class="fa-solid fa-rotate-left text-xs"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <div class="font-bold text-xs sm:text-sm text-slate-100 font-tech tracking-wide">INSTA TURN</div>
+                                <span class="text-[9px] bg-amber-500/10 text-amber-400 px-1.5 py-0.5 rounded font-bold border border-amber-500/20">360°</span>
+                            </div>
+                            <div class="text-[11px] text-slate-400 mt-0.5 leading-relaxed font-normal">
+                                Xoay người tức thì 360 độ linh hoạt không độ trễ.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 6: Aim Bot -->
+                <div data-category="combat" class="feature-card spotlight-card rounded-2xl p-3.5 border border-white/5 bg-slate-900/40">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-xl bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center shrink-0 text-indigo-400">
+                            <i class="fa-solid fa-crosshairs text-xs"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <div class="font-bold text-xs sm:text-sm text-slate-100 font-tech tracking-wide">AIM BOT</div>
+                                <span class="text-[9px] bg-indigo-500/10 text-indigo-400 px-1.5 py-0.5 rounded font-bold border border-indigo-500/20">AUTO LOCK</span>
+                            </div>
+                            <div class="text-[11px] text-slate-400 mt-0.5 leading-relaxed font-normal">
+                                Tự động ghim tâm chính xác vào Đầu / Thân / Chân.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 7: Silent Aim (Full-Width card with Neon Glow) -->
+                <div data-category="combat" class="feature-card spotlight-card sm:col-span-2 rounded-2xl p-3.5 border border-emerald-500/40 bg-gradient-to-r from-emerald-950/40 via-slate-900/60 to-slate-900/50 animate-border-glow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center shrink-0 text-emerald-300">
+                            <i class="fa-solid fa-bullseye text-xs"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-xs sm:text-sm text-emerald-300 font-tech tracking-wide">SILENT AIM TÙY BIẾN</span>
+                                <span class="text-[10px] bg-emerald-500 text-slate-950 px-2 py-0.5 rounded font-black shadow-sm shadow-emerald-500/30">VIP EXCLUSIVE</span>
+                            </div>
+                            <div class="text-[11px] text-slate-300 mt-0.5 leading-relaxed font-normal">
+                                Cắn tầm xa tùy biến linh hoạt từ <strong class="text-emerald-400 font-bold">1m - 15m</strong> (mặc định trong gốc game là 0m).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: UPCOMING FEATURES (TÍNH NĂNG ĐANG PHÁT TRIỂN) -->
+        <div class="relative z-10 mb-7 overflow-hidden rounded-2xl border border-cyan-500/30 bg-slate-900/50 p-4 backdrop-blur-md">
+            <div class="flex items-center justify-between mb-3 border-b border-white/5 pb-2.5">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-spinner animate-spin text-cyan-400 text-xs"></i>
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-cyan-300 font-tech">
+                        TÍNH NĂNG ĐANG PHÁT TRIỂN (SẮP RA MẮT)
+                    </h3>
+                </div>
+                <span class="text-[10px] bg-cyan-950 text-cyan-300 border border-cyan-800 px-2 py-0.5 rounded-full font-bold">
+                    HOT UPDATES
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                <div class="flex items-center gap-2 text-slate-300 bg-slate-900/60 p-2.5 rounded-xl border border-white/5 hover:border-cyan-500/30 transition-all">
+                    <i class="fa-solid fa-bone text-cyan-400 text-xs"></i>
+                    <span><strong>Chống gãy xương</strong> (Anti Bone-Break)</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-300 bg-slate-900/60 p-2.5 rounded-xl border border-white/5 hover:border-emerald-500/30 transition-all">
+                    <i class="fa-solid fa-gauge-high text-emerald-400 text-xs"></i>
+                    <span><strong>Vô hạn Stamina</strong> (Unlimited Sprint)</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-300 bg-slate-900/60 p-2.5 rounded-xl border border-white/5 hover:border-red-500/30 transition-all">
+                    <i class="fa-solid fa-droplet-slash text-red-400 text-xs"></i>
+                    <span><strong>Chống chảy máu</strong> (Anti Bleed)</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-300 bg-slate-900/60 p-2.5 rounded-xl border border-white/5 hover:border-amber-500/30 transition-all">
+                    <i class="fa-solid fa-bolt text-amber-400 text-xs"></i>
+                    <span><strong>Cắn liên tục 0s delay</strong> (No Cooldown Bite)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: PRICING CARDS (BẢNG GIÁ) -->
+        <div class="relative z-10 mb-7">
+            <div class="flex items-center gap-2 mb-3.5 px-1">
+                <i class="fa-solid fa-tags text-emerald-400 text-sm"></i>
+                <h2 class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-100 font-tech">
+                    BẢNG GIÁ DỊCH VỤ
+                </h2>
+            </div>
+
+            <div class="space-y-3">
+
+                <!-- Item 1: 1 Ngay -->
                 <div
-                    class="flex items-center justify-between sm:justify-end gap-3.5 pt-2 sm:pt-0 border-t border-white/5 sm:border-t-0">
-                    <div class="text-right">
-                        <div class="text-xs text-slate-500 line-through">150.000đ</div>
-                        <div class="text-xl sm:text-2xl font-black font-orbitron text-emerald-400 whitespace-nowrap">
+                    class="spotlight-card relative overflow-hidden rounded-2xl p-4 border border-white/5 backdrop-blur-md flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span class="font-bold text-sm sm:text-base text-slate-100 font-tech tracking-wide">GÓI 1 NGÀY</span>
+                            <span class="text-[10px] bg-slate-800 text-emerald-400 px-2 py-0.5 rounded-md font-bold">-20%</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end gap-3 text-right">
+                        <div class="text-xs text-slate-500 line-through font-medium">150.000đ</div>
+                        <div class="text-xl sm:text-2xl font-extrabold font-tech text-emerald-400 whitespace-nowrap tracking-wide">
                             119.000đ
                         </div>
                     </div>
-                    <a href="https://t.me/hacktheisle" target="_blank" rel="noopener noreferrer"
-                        class="px-4 py-2 bg-slate-800 hover:bg-emerald-500 hover:text-slate-950 text-slate-200 border border-slate-700/60 rounded-xl text-xs font-bold transition-all duration-300 flex items-center gap-1.5 shadow-sm">
-                        <span>Mua</span>
-                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </a>
                 </div>
-            </div>
 
-            <!-- Item 2: 7 Ngay -->
-            <div onclick="selectPackage('GÓI TIẾT KIỆM (7 Ngày)', '289.000đ', this)"
-                class="spotlight-card group relative cursor-pointer overflow-hidden rounded-2xl p-4 sm:p-4.5 border border-cyan-500/20 backdrop-blur-md transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div class="flex-1">
-                    <div class="flex items-center gap-2 flex-wrap">
-                        <span class="font-bold text-sm sm:text-base text-cyan-300">GÓI 7 NGÀY</span>
-                        <span class="text-[10px] bg-cyan-950 text-cyan-300 px-2 py-0.5 rounded-md font-bold">-17%</span>
-                    </div>
-                </div>
+                <!-- Item 2: 7 Ngay -->
                 <div
-                    class="flex items-center justify-between sm:justify-end gap-3.5 pt-2 sm:pt-0 border-t border-white/5 sm:border-t-0">
-                    <div class="text-right">
-                        <div class="text-xs text-slate-500 line-through">350.000đ</div>
-                        <div class="text-xl sm:text-2xl font-black font-orbitron text-cyan-400 whitespace-nowrap">
+                    class="spotlight-card relative overflow-hidden rounded-2xl p-4 border border-cyan-500/20 backdrop-blur-md flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span class="font-bold text-sm sm:text-base text-cyan-300 font-tech tracking-wide">GÓI 7 NGÀY</span>
+                            <span class="text-[10px] bg-cyan-950 text-cyan-300 px-2 py-0.5 rounded-md font-bold">-17%</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end gap-3 text-right">
+                        <div class="text-xs text-slate-500 line-through font-medium">350.000đ</div>
+                        <div class="text-xl sm:text-2xl font-extrabold font-tech text-cyan-400 whitespace-nowrap tracking-wide">
                             289.000đ
                         </div>
                     </div>
-                    <a href="https://t.me/hacktheisle" target="_blank" rel="noopener noreferrer"
-                        class="px-4 py-2 bg-cyan-500/10 hover:bg-cyan-500 hover:text-slate-950 text-cyan-300 border border-cyan-500/30 rounded-xl text-xs font-bold transition-all duration-300 flex items-center gap-1.5 shadow-sm">
-                        <span>Mua</span>
-                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </a>
                 </div>
-            </div>
 
-            <!-- Item 3: 30 Ngay (HOT / BEST SELLER) -->
-            <div onclick="selectPackage('GÓI PHỔ THÔNG (30 Ngày)', '499.000đ', this)"
-                class="spotlight-card selected-card group relative cursor-pointer overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900/60 to-slate-900/40 p-4 sm:p-4.5 border border-emerald-500/50 backdrop-blur-md transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <!-- Item 3: 30 Ngay (HOT / BEST SELLER) -->
                 <div
-                    class="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-emerald-500/10 blur-xl pointer-events-none">
-                </div>
-                <div class="flex-1">
-                    <div class="flex items-center gap-2 flex-wrap">
-                        <span class="font-bold text-sm sm:text-base text-emerald-300">GÓI 30 NGÀY</span>
-                        <span
-                            class="text-[10px] sm:text-xs bg-emerald-500 text-slate-950 px-2.5 py-0.5 rounded-full font-black uppercase tracking-wider shadow-sm shadow-emerald-500/30 flex items-center gap-1">
-                            <i class="fa-solid fa-fire text-[10px]"></i>Phổ Biến nhất
-                        </span>
-                        <span
-                            class="text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800 px-2 py-0.5 rounded-md font-bold">Tiết
-                            kiệm 300k</span>
+                    class="spotlight-card featured-card relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900/60 to-slate-900/40 p-4 border border-emerald-500/50 backdrop-blur-md flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span class="font-bold text-sm sm:text-base text-emerald-300 font-tech tracking-wide">GÓI 30 NGÀY</span>
+                            <span
+                                class="text-[10px] sm:text-xs bg-emerald-500 text-slate-950 px-2.5 py-0.5 rounded-full font-extrabold uppercase tracking-wider shadow-sm flex items-center gap-1">
+                                <i class="fa-solid fa-fire text-[10px]"></i>Phổ Biến nhất
+                            </span>
+                            <span
+                                class="text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800 px-2 py-0.5 rounded-md font-bold">Tiết kiệm 300k</span>
+                        </div>
                     </div>
-                </div>
-                <div
-                    class="flex items-center justify-between sm:justify-end gap-3.5 pt-2 sm:pt-0 border-t border-white/5 sm:border-t-0">
-                    <div class="text-right">
-                        <div class="text-xs text-slate-500 line-through">800.000đ</div>
+                    <div class="flex items-center justify-end gap-3 text-right">
+                        <div class="text-xs text-slate-500 line-through font-medium">800.000đ</div>
                         <div
-                            class="text-2xl sm:text-3xl font-black font-orbitron text-emerald-300 whitespace-nowrap drop-shadow-[0_0_8px_rgba(16,185,129,0.3)]">
+                            class="text-2xl sm:text-3xl font-extrabold font-tech text-emerald-300 whitespace-nowrap tracking-wide drop-shadow-[0_0_8px_rgba(16,185,129,0.3)]">
                             499.000đ
                         </div>
                     </div>
-                    <a href="https://t.me/hacktheisle" target="_blank" rel="noopener noreferrer"
-                        class="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-xl text-xs font-black transition-all duration-300 flex items-center gap-1.5 shadow-md shadow-emerald-500/20">
-                        <span>Mua</span>
-                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </a>
                 </div>
-            </div>
 
-            <!-- Item 4: Vinh Vien (VIP) -->
-            <div onclick="selectPackage('GÓI VIP TRỌN ĐỜI (Vĩnh Viễn)', '1.499.000đ', this)"
-                class="spotlight-card group relative cursor-pointer overflow-hidden rounded-2xl bg-gradient-to-r from-amber-950/40 via-slate-900/60 to-slate-900/40 p-4 sm:p-4.5 border border-amber-500/40 backdrop-blur-md transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <!-- Item 4: Vinh Vien (VIP) -->
                 <div
-                    class="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-amber-500/10 blur-xl pointer-events-none">
-                </div>
-                <div class="flex-1">
-                    <div class="flex items-center gap-2 flex-wrap">
-                        <span class="font-bold text-sm sm:text-base text-amber-300">GÓI TRỌN ĐỜI</span>
-                        <span
-                            class="text-[10px] sm:text-xs bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1">
-                            <i class="fa-solid fa-crown text-[10px] text-amber-400"></i>VĨNH VIỄN
-                        </span>
-                        <span
-                            class="text-[10px] bg-amber-950 text-amber-300 border border-amber-800 px-2 py-0.5 rounded-md font-bold">Giảm
-                            1.000k</span>
+                    class="spotlight-card relative overflow-hidden rounded-2xl bg-gradient-to-r from-amber-950/40 via-slate-900/60 to-slate-900/40 p-4 border border-amber-500/40 backdrop-blur-md flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span class="font-bold text-sm sm:text-base text-amber-300 font-tech tracking-wide">GÓI TRỌN ĐỜI</span>
+                            <span
+                                class="text-[10px] sm:text-xs bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1">
+                                <i class="fa-solid fa-crown text-[10px] text-amber-400"></i>VĨNH VIỄN
+                            </span>
+                            <span
+                                class="text-[10px] bg-amber-950 text-amber-300 border border-amber-800 px-2 py-0.5 rounded-md font-bold">Giảm 1.000k</span>
+                        </div>
+                        <div class="text-xs text-slate-400 mt-1 flex items-center gap-1.5 font-medium">
+                            <i class="fa-solid fa-shield text-amber-400 text-[10px]"></i>
+                            <span>Dùng vĩnh viễn, ưu tiên hỗ trợ 1:1</span>
+                        </div>
                     </div>
-                    <div class="text-xs text-slate-300 mt-1.5 flex items-center gap-1.5">
-                        <i class="fa-solid fa-crown text-amber-400 text-[11px]"></i>
-                        <span>Dùng vĩnh viễn, ưu tiên hỗ trợ 1:1</span>
-                    </div>
-                </div>
-                <div
-                    class="flex items-center justify-between sm:justify-end gap-3.5 pt-2 sm:pt-0 border-t border-white/5 sm:border-t-0">
-                    <div class="text-right">
-                        <div class="text-xs text-slate-500 line-through">2.500.000đ</div>
+                    <div class="flex items-center justify-end gap-3 text-right">
+                        <div class="text-xs text-slate-500 line-through font-medium">2.500.000đ</div>
                         <div
-                            class="text-2xl sm:text-3xl font-black font-orbitron text-amber-400 whitespace-nowrap drop-shadow-[0_0_8px_rgba(245,158,11,0.3)]">
+                            class="text-2xl sm:text-3xl font-extrabold font-tech text-amber-400 whitespace-nowrap tracking-wide drop-shadow-[0_0_8px_rgba(245,158,11,0.3)]">
                             1.499.000đ
                         </div>
                     </div>
-                    <a href="https://t.me/hacktheisle" target="_blank" rel="noopener noreferrer"
-                        class="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl text-xs font-black transition-all duration-300 flex items-center gap-1.5 shadow-md shadow-amber-500/20">
-                        <span>Mua</span>
-                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </a>
                 </div>
-            </div>
 
-        </div>
-
-        <!-- FAQ Mini Section (Interactive Accordion) -->
-        <div
-            class="relative z-10 mb-6 overflow-hidden rounded-2xl border border-white/5 bg-slate-900/40 p-3.5 sm:p-5 backdrop-blur-md">
-            <!-- Header FAQ -->
-            <div class="mb-3 flex items-center justify-between border-b border-white/5 pb-2.5">
-                <div class="flex items-center gap-1.5 sm:gap-2">
-                    <i class="fa-solid fa-circle-question text-sm sm:text-base text-cyan-400"></i>
-                    <span class="text-[11px] font-bold uppercase tracking-wider text-slate-200 sm:text-sm">CÂU HỎI
-                        THƯỜNG GẶP (FAQ)</span>
-                </div>
-                <span class="text-[10px] sm:text-[11px] text-slate-400">Bấm để xem</span>
-            </div>
-
-            <!-- FAQ List -->
-            <div class="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
-                <!-- Item 1 -->
-                <details
-                    class="group rounded-xl bg-slate-900/50 open:bg-slate-800/60 border border-white/5 p-2.5 sm:p-3 transition-colors">
-                    <summary
-                        class="flex items-center justify-between font-semibold text-slate-200 list-none cursor-pointer select-none">
-                        <span class="flex items-center gap-2 pr-2">
-                            <i class="fa-solid fa-shield-halved text-emerald-400 text-xs shrink-0"></i>
-                            <span class="leading-snug">Bản hack có an toàn không?</span>
-                        </span>
-                        <i
-                            class="fa-solid fa-chevron-down text-[10px] sm:text-xs text-slate-400 group-open:rotate-180 transition-transform duration-200 shrink-0"></i>
-                    </summary>
-                    <p
-                        class="mt-2 text-slate-300 text-[11px] sm:text-xs pl-3.5 sm:pl-4 border-l-2 border-emerald-500/50 leading-relaxed">
-                        Hệ thống tích hợp Anti-ban bypass cao cấp 2026, bảo vệ tài khoản game an toàn 100% trước mọi đợt
-                        quét.
-                    </p>
-                </details>
-
-                <!-- Item 2 -->
-                <details
-                    class="group rounded-xl bg-slate-900/50 open:bg-slate-800/60 border border-white/5 p-2.5 sm:p-3 transition-colors">
-                    <summary
-                        class="flex items-center justify-between font-semibold text-slate-200 list-none cursor-pointer select-none">
-                        <span class="flex items-center gap-2 pr-2">
-                            <i class="fa-solid fa-bolt text-amber-400 text-xs shrink-0"></i>
-                            <span class="leading-snug">Thanh toán xong nhận key ở đâu?</span>
-                        </span>
-                        <i
-                            class="fa-solid fa-chevron-down text-[10px] sm:text-xs text-slate-400 group-open:rotate-180 transition-transform duration-200 shrink-0"></i>
-                    </summary>
-                    <p
-                        class="mt-2 text-slate-300 text-[11px] sm:text-xs pl-3.5 sm:pl-4 border-l-2 border-amber-500/50 leading-relaxed">
-                        Ngay sau khi giao dịch qua Telegram, hệ thống sẽ gửi mã Key + File cài đặt hoàn toàn tự động chỉ
-                        trong 30 giây.
-                    </p>
-                </details>
-
-                <!-- Item 3 -->
-                <details
-                    class="group rounded-xl bg-slate-900/50 open:bg-slate-800/60 border border-white/5 p-2.5 sm:p-3 transition-colors">
-                    <summary
-                        class="flex items-center justify-between font-semibold text-slate-200 list-none cursor-pointer select-none">
-                        <span class="flex items-center gap-2 pr-2">
-                            <i class="fa-solid fa-headset text-cyan-400 text-xs shrink-0"></i>
-                            <span class="leading-snug">Tôi có được hỗ trợ cài đặt không?</span>
-                        </span>
-                        <i
-                            class="fa-solid fa-chevron-down text-[10px] sm:text-xs text-slate-400 group-open:rotate-180 transition-transform duration-200 shrink-0"></i>
-                    </summary>
-                    <p
-                        class="mt-2 text-slate-300 text-[11px] sm:text-xs pl-3.5 sm:pl-4 border-l-2 border-cyan-500/50 leading-relaxed">
-                        Có! Đội ngũ KTV sẽ hỗ trợ 1:1 qua UltraView hoặc gửi video HDSD chi tiết từng bước cho đến khi
-                        sử dụng thành thạo.
-                    </p>
-                </details>
-
-                <!-- Item 4 -->
-                <details
-                    class="group rounded-xl bg-slate-900/50 open:bg-slate-800/60 border border-white/5 p-2.5 sm:p-3 transition-colors">
-                    <summary
-                        class="flex items-center justify-between font-semibold text-slate-200 list-none cursor-pointer select-none">
-                        <span class="flex items-center gap-2 pr-2">
-                            <i class="fa-solid fa-rotate text-emerald-400 text-xs shrink-0"></i>
-                            <span class="leading-snug">Game cập nhật thì sao?</span>
-                        </span>
-                        <i
-                            class="fa-solid fa-chevron-down text-[10px] sm:text-xs text-slate-400 group-open:rotate-180 transition-transform duration-200 shrink-0"></i>
-                    </summary>
-                    <p
-                        class="mt-2 text-slate-300 text-[11px] sm:text-xs pl-3.5 sm:pl-4 border-l-2 border-emerald-500/50 leading-relaxed">
-                        Tool tự động cập nhật đồng bộ theo phiên bản game hoàn toàn miễn phí trong suốt thời gian gói
-                        của bạn.
-                    </p>
-                </details>
             </div>
         </div>
 
-        <!-- Main Call To Action Button -->
-        <div class="text-center relative z-10 space-y-3">
-            <!-- Selected Package Dynamic Label -->
-            <div id="selected-package-badge"
-                class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-400 text-xs font-bold">
-                <i class="fa-solid fa-check-circle text-xs"></i>
-                <span>Đang chọn: <strong id="selected-package-name" class="text-white">GÓI PHỔ THÔNG (30 Ngày) -
-                        499.000đ</strong></span>
-            </div>
+        <!-- Section 4: MAIN DISCORD CTA BUTTON -->
+        <div class="text-center relative z-10">
+            <a href="https://discord.gg/BzTrm2FeE9" target="_blank" rel="noopener noreferrer"
+                class="animate-discord-glow group relative flex items-center justify-center gap-3 w-full py-4 px-6 overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 text-white font-bold tracking-wide text-sm sm:text-base border border-indigo-400/30 backdrop-blur-md transition-all duration-300 hover:brightness-110 hover:scale-[1.01] active:scale-[0.99]">
 
-            <!-- Main Call To Action Button -->
-            <div class="text-center relative z-10 space-y-3">
-                <!-- Main CTA Button -->
-                <a href="https://t.me/hacktheisle" target="_blank" rel="noopener noreferrer"
-                    class="group relative flex items-center justify-center gap-3 w-full py-4 px-6 overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-500/90 via-teal-500/90 to-cyan-500/90 text-slate-950 font-extrabold tracking-wide text-sm sm:text-base border border-emerald-400/30 backdrop-blur-md transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:shadow-emerald-500/20 active:scale-[0.98]">
+                <!-- Light Reflection FX -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out">
+                </div>
 
-                    <!-- Subtle Light Reflection (Lớp sáng lướt qua nhẹ nhàng) -->
-                    <div
-                        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out">
-                    </div>
-
-                    <i
-                        class="fa-brands fa-telegram text-lg sm:text-xl transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"></i>
-                    <span class="uppercase font-sans font-black">LIÊN HỆ ĐẶT MUA NGAY</span>
-                    <i
-                        class="fa-solid fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1"></i>
-                </a>
-            </div>
-
-            <!-- Quick Action Links -->
-            <div class="flex items-center justify-center gap-3 flex-wrap pt-1">
-                <a href="https://t.me/hacktheisle" target="_blank" rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-all py-1.5 px-3 rounded-xl bg-slate-900/40 border border-white/5 hover:border-slate-700">
-                    <i class="fa-brands fa-telegram text-cyan-400"></i>
-                    <span>Support: <strong class="text-emerald-400 font-semibold">@hacktheisle</strong></span>
-                </a>
-
-                <button onclick="toggleQRModal()"
-                    class="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-all py-1.5 px-3 rounded-xl bg-slate-900/40 border border-white/5 hover:border-slate-700">
-                    <i class="fa-solid fa-qrcode text-amber-400"></i>
-                    <span>Mở QR Code Telegram</span>
-                </button>
-            </div>
+                <i
+                    class="fa-brands fa-discord text-xl sm:text-2xl transition-transform duration-300 group-hover:scale-110"></i>
+                <span class="uppercase font-tech font-extrabold tracking-wider">THAM GIA SERVER DISCORD NGAY</span>
+                <i
+                    class="fa-solid fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1.5"></i>
+            </a>
+            <p class="text-[11px] text-slate-400 mt-2.5 flex items-center justify-center gap-1.5 font-medium">
+                <i class="fa-solid fa-headset text-indigo-400"></i>
+                <span>Tham gia Discord để được hỗ trợ tư vấn & đặt mua trực tiếp 24/7</span>
+            </p>
         </div>
 
     </main>
 
-    <!-- Toast Copy Alert Notification -->
-    <div id="copy-toast"
-        class="fixed top-5 right-5 z-50 bg-emerald-500 text-slate-950 font-bold px-4 py-2.5 rounded-xl shadow-2xl text-xs flex items-center gap-2 transition-all duration-300 opacity-0 pointer-events-none -translate-y-2">
-        <i class="fa-solid fa-circle-check"></i>
-        <span>Đã sao chép Telegram Username: @hacktheisle</span>
-    </div>
-
-    <!-- Telegram QR Modal Dialog -->
-    <div id="qr-modal"
-        class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
-        <div
-            class="bg-slate-900 border border-gray-800 rounded-3xl p-6 max-w-sm w-full text-center relative shadow-2xl">
-            <button onclick="toggleQRModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div
-                class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl mx-auto mb-3">
-                <i class="fa-brands fa-telegram"></i>
-            </div>
-            <h3 class="font-bold text-lg text-white mb-1">Quét Mã QR Telegram</h3>
-            <p class="text-xs text-slate-400 mb-4">Dùng camera điện thoại để nhắn tin trực tiếp tới @hacktheisle</p>
-
-            <!-- Dynamic QR Code -->
-            <div class="bg-white p-3 rounded-2xl inline-block shadow-inner mb-4">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://t.me/hacktheisle"
-                    alt="Telegram QR Code" class="w-44 h-44 rounded-lg">
-            </div>
-
-            <a href="https://t.me/hacktheisle" target="_blank" rel="noopener noreferrer"
-                class="block w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs rounded-xl uppercase transition">
-                Mở ứng dụng Telegram
-            </a>
-        </div>
-    </div>
-
     <!-- Footer Copyright -->
-    <footer class="mt-6 text-center text-xs text-slate-500">
+    <footer class="mt-6 text-center text-xs text-slate-500 font-medium">
         <p>© 2026 Hack The Isle - All Rights Reserved.</p>
     </footer>
+
+    <!-- Floating Mobile Bottom Quick Discord CTA Bar -->
+    <div class="fixed bottom-3 inset-x-3 z-50 sm:hidden">
+        <a href="https://discord.gg/BzTrm2FeE9" target="_blank" rel="noopener noreferrer"
+            class="flex items-center justify-between py-3 px-4 rounded-2xl bg-indigo-600/90 text-white font-bold border border-indigo-400/40 backdrop-blur-xl shadow-2xl shadow-indigo-900/50 active:scale-[0.98]">
+            <div class="flex items-center gap-2.5">
+                <i class="fa-brands fa-discord text-xl text-white"></i>
+                <div class="text-left leading-tight">
+                    <div class="text-xs font-tech font-extrabold uppercase">THAM GIA DISCORD</div>
+                    <div class="text-[10px] text-indigo-200 font-normal">Tư vấn & nhận key tự động 24/7</div>
+                </div>
+            </div>
+            <i class="fa-solid fa-chevron-right text-xs text-indigo-200"></i>
+        </a>
+    </div>
 
     <!-- Interactive Scripts -->
     <script>
@@ -515,82 +530,21 @@
             });
         });
 
-        // Package Selection Handling
-        function selectPackage(name, price, element) {
-            // Remove previous selection styling
-            document.querySelectorAll('.spotlight-card').forEach(el => el.classList.remove('selected-card'));
+        // Feature Filter Category Handler
+        function filterFeatures(category, btnElement) {
+            // Update active tab button styling
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active', 'text-white'));
+            btnElement.classList.add('active');
 
-            // Add selection highlight
-            element.classList.add('selected-card');
-
-            // Update Header/CTA badges
-            document.getElementById('selected-package-name').innerText = `${name} - ${price}`;
-            document.getElementById('main-cta-text').innerText = `LIÊN HỆ ĐẶT MUA`;
-
-            // Update Mobile Bar
-            document.getElementById('mobile-selected-name').innerText = name;
-            document.getElementById('mobile-selected-price').innerText = price;
-        }
-
-        // Copy Telegram Username
-        function copyTelegram() {
-            navigator.clipboard.writeText('@hacktheisle').then(() => {
-                const toast = document.getElementById('copy-toast');
-                toast.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-2');
-                toast.classList.add('opacity-100', 'translate-y-0');
-
-                setTimeout(() => {
-                    toast.classList.remove('opacity-100', 'translate-y-0');
-                    toast.classList.add('opacity-0', 'pointer-events-none', '-translate-y-2');
-                }, 2500);
-            });
-        }
-
-        // Toggle QR Code Modal
-        function toggleQRModal() {
-            const modal = document.getElementById('qr-modal');
-            if (modal.classList.contains('hidden')) {
-                modal.classList.remove('hidden');
-                setTimeout(() => modal.classList.remove('opacity-0'), 10);
-            } else {
-                modal.classList.add('opacity-0');
-                setTimeout(() => modal.classList.add('hidden'), 300);
-            }
-        }
-
-        let purchaseIdx = 0;
-        function cycleSocialProof() {
-            const toast = document.getElementById('social-proof-toast');
-            if (!toast) return;
-
-            toast.classList.remove('hidden');
-            const data = samplePurchases[purchaseIdx];
-            document.getElementById('toast-user').innerText = data.user;
-            document.getElementById('toast-desc').innerHTML = `Vừa mua <span class="text-emerald-400 font-semibold">${data.desc.split('Vừa mua ')[1] || data.desc}</span>`;
-
-            purchaseIdx = (purchaseIdx + 1) % samplePurchases.length;
-        }
-
-        // Cycle toast every 10s
-        setInterval(cycleSocialProof, 12000);
-        setTimeout(cycleSocialProof, 3000);
-
-        // Poster Export Script
-        function downloadImage() {
-            const element = document.getElementById('pricing-poster');
-
-            html2canvas(element, {
-                backgroundColor: '#060911',
-                scale: 3, // High resolution output
-                useCORS: true,
-                borderRadius: 24
-            }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = 'bang-gia-hack-the-isle-2026.png';
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-            }).catch(err => {
-                console.error('Error generating image:', err);
+            // Filter feature cards
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                if (category === 'all' || cardCat === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
             });
         }
     </script>
